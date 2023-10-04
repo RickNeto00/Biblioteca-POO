@@ -6,6 +6,47 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Book {
+  id Int @id @unique @default(autoincrement())
+  title String @unique
+  yearPub Int
+  pubCompanyId Int @unique
+  authorId Int @unique
+  bookType String @unique
+
+  //relations
+  pubCompany PubCompany @relation(fields: [pubCompanyId], references: [id])
+  author Author @relation(fields: [authorId], references: [id])
+}
+
+model Author {
+  id Int @id @unique @default(autoincrement())
+  name String @unique
+  age Int
+
+  //relations
+  book Book[]
+}
+
+model User {
+  id Int @id @unique @default(autoincrement())
+  email String @unique
+  password String
+  userName String @unique
+  userType String
+
+  //relations
+}
+
+model PubCompany {
+  id Int @id @unique @default(autoincrement())
+  name String @unique
+  foundationDate DateTime
+
+  //relations
+  book Book[]
 }

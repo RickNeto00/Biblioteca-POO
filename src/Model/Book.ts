@@ -1,3 +1,4 @@
+import { prisma } from "../../db";
 import Author from "./Author";
 import PubCompany from "./PubCompany";
 
@@ -66,5 +67,19 @@ export default class Book{
 
     public setBookType(bookType: BookTypes): void{
         this.bookType = bookType;
+    }
+
+    //FUNCTIONS
+    public async createBook(title: string, yearPub: number, pubCompanyId: number, authorId: number, bookType: BookTypes) {
+        const user = await prisma.book.create({
+            data: {
+                title: title,
+                yearPub: yearPub,
+                pubCompanyId : pubCompanyId,
+                authorId: authorId
+            }
+        });
+        return user;
+    }
     }
 }

@@ -1,11 +1,18 @@
+import { prisma } from "../../db";
+
+export enum UserTypes{
+    Common = "Common",
+    Administrator = "Administrator"
+}
+
 export default class User{
-    private login: string;
+    private email: string;
     private password: string;
     private userName: string;
-    private userType: number;
+    private userType: UserTypes;
 
-    constructor(login: string, password: string, userName: string, userType: number){
-        this.login = login;
+    constructor(email: string, password: string, userName: string, userType: UserTypes){
+        this.email = email;
         this.password = password;
         this.userName = userName;
         this.userType = userType;
@@ -13,8 +20,8 @@ export default class User{
 
     //GETS
 
-    public getLogin(): string{
-        return this.login;
+    public getEmail(): string{
+        return this.email;
     }
 
     public getPassword(): string{
@@ -25,14 +32,14 @@ export default class User{
         return this.userName;
     }
 
-    public getUserType(): number{
+    public getUserType(): UserTypes{
         return this.userType;
     }
 
     //SETS
 
-    public setLogin(login: string): void{
-        this.login = login;
+    public setEmail(email: string): void{
+        this.email = email;
     }
 
     public setPassword(password: string): void{
@@ -43,7 +50,40 @@ export default class User{
         this.userName = userName;
     }
 
-    public setUserType(userType: number): void{
+    public setUserType(userType: UserTypes): void{
         this.userType = userType;
+    }
+
+    //FUNCTIONS
+
+    public async createUser(email: string, password: string, userName: string, userType: UserTypes) {
+        const user = await prisma.user.create({
+            data: {
+                email: email,
+                password: password,
+                userName: userName,
+                userType: userType
+            }
+        });
+        return user;
+    }
+
+    public async findUserByEmailModel(email: string) {
+        const user = await prisma.user.findUnique({
+            where: {
+                email: email
+            }
+        });
+        return user;
+    }
+
+    public async findUserByLoginModel(email: string, password: string) {
+        const user = await prisma.user.findUnique({
+            where: {
+                email: email,
+                password: password
+            }
+        })
+        return user;
     }
 }
