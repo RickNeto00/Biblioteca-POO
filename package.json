@@ -12,6 +12,8 @@
   "dependencies": {
     "@prisma/client": "^5.3.1",
     "@types/prompt-sync": "^4.2.0",
+    "cookies-next": "^4.0.0",
+    "jsonwebtoken": "^8.5.1",
     "prompt-sync": "^4.2.0",
     "prompt-sync-history": "^1.0.1"
   },
