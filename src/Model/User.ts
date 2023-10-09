@@ -53,37 +53,4 @@ export default class User{
     public setUserType(userType: UserTypes): void{
         this.userType = userType;
     }
-
-    //FUNCTIONS
-
-    public async createUser(email: string, password: string, userName: string, userType: UserTypes) {
-        const user = await prisma.user.create({
-            data: {
-                email: email,
-                password: password,
-                userName: userName,
-                userType: userType
-            }
-        });
-        return user;
-    }
-
-    public async findUserByEmailModel(email: string) {
-        const user = await prisma.user.findUnique({
-            where: {
-                email: email
-            }
-        });
-        return user;
-    }
-
-    public async findUserByLoginModel(email: string, password: string) {
-        const user = await prisma.user.findUnique({
-            where: {
-                email: email,
-                password: password
-            }
-        })
-        return user;
-    }
 }

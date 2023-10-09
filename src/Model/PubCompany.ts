@@ -1,3 +1,5 @@
+import { prisma } from "../../db";
+
 export default class PubCompany{
     private name: string;
     private foundationDate: Date;

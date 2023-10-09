@@ -1,3 +1,5 @@
+import { prisma } from "../../db";
+
 export default class Author{
     private name: string;
     private age: number;
@@ -26,5 +28,4 @@ export default class Author{
     public setAge(age: number): void{
         this.age = age;
     }
-
 }

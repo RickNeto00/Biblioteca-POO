@@ -30,7 +30,7 @@ CREATE TABLE "User" (
 CREATE TABLE "PubCompany" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
-    "foundationDate" DATETIME NOT NULL
+    "foundationDate" TEXT NOT NULL
 );
 
 -- CreateIndex

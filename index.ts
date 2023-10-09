@@ -1,15 +1,52 @@
-import Author from "./src/Model/Author";
-import Book, { BookTypes } from "./src/Model/Book";
-import pubCompany from "./src/Model/PubCompany";
+import UserController from "./src/Controller/UserController";
 import PromptSync = require("prompt-sync");
+import { UserTypes } from "./src/Model/User";
 
-let dataDeFundacao: Date = new Date("2020-03-03");
-let editora: pubCompany = new pubCompany("Editora X", dataDeFundacao);
-let autor: Author = new Author("Henrique", 21);
-let book: Book = new Book("Livro Teste", 2023, editora, autor, BookTypes.Adventure);
+const user = new UserController();
+const prompt = PromptSync();
+let inputEmail: string = "";
+let inputPassword: string = "";
+let inputUserName: string = "";
+let inputUserType: string = "";
 
-console.log(book);
-let prompt = PromptSync();
+console.log("============================= LIBRARY SYSTEM =============================\n");
+console.log("| 1 | -> Register");
+console.log("| 2 | -> Login\n");
 
-let choice = prompt("Digite: ");
-console.log(choice);
+let inputChoice = prompt("Choose an Option: ");
+
+switch (inputChoice) {
+    case "1":
+        try {
+            console.log("\n============== REGISTRATION ==============\n");
+            inputEmail = prompt("Email: ");
+            inputPassword = prompt("Password: ");
+            inputUserName = prompt("UserName: ");
+            console.log("Type ( 1 ) to Admin User.\nType ( 2 ) to Common User.");
+            inputUserType = prompt("Choose: ");
+
+            if (inputUserType == "1") {
+                user.createUser(inputEmail, inputPassword, inputUserName, UserTypes.Administrator);
+            }
+
+            if (inputUserType == "2") {
+                user.createUser(inputEmail, inputPassword, inputUserName, UserTypes.Common);
+            }
+        } catch (error) {
+            console.log("Sorry, Try Again.");
+        }
+        
+        break;
+
+    case "2":
+        console.log("\n============== LOGIN ==============\n");
+        inputEmail = prompt("Email: ");
+        inputPassword = prompt("Password: ");
+
+        break;
+
+    default:
+        console.log("Type a Valid Number.");
+        
+        break;
+}

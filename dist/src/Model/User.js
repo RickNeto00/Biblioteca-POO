@@ -1,15 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserTypes = void 0;
+var UserTypes;
+(function (UserTypes) {
+    UserTypes["Common"] = "Common";
+    UserTypes["Administrator"] = "Administrator";
+})(UserTypes || (exports.UserTypes = UserTypes = {}));
 class User {
-    constructor(login, password, userName, userType) {
-        this.login = login;
+    constructor(email, password, userName, userType) {
+        this.email = email;
         this.password = password;
         this.userName = userName;
         this.userType = userType;
     }
     //GETS
-    getLogin() {
-        return this.login;
+    getEmail() {
+        return this.email;
     }
     getPassword() {
         return this.password;
@@ -21,8 +27,8 @@ class User {
         return this.userType;
     }
     //SETS
-    setLogin(login) {
-        this.login = login;
+    setEmail(email) {
+        this.email = email;
     }
     setPassword(password) {
         this.password = password;

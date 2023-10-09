@@ -68,28 +68,5 @@ export default class Book{
     public setBookType(bookType: BookTypes): void{
         this.bookType = bookType;
     }
-
-    //FUNCTIONS
-    public async createBook(title: string, yearPub: number, pubCompanyId: number, authorId: number, bookType: BookTypes) {
-        const book = await prisma.book.create({
-            data: {
-                title: title,
-                yearPub: yearPub,
-                pubCompanyId : pubCompanyId,
-                authorId: authorId,
-                bookType: bookType
-            }
-        });
-        return book;
-    }
-
-    public async findBookByTitleModel(title: string) {
-        const book = prisma.book.findUnique({
-            where: {
-                title: title
-            }
-        });
-        return book;
-    }
 }
 
