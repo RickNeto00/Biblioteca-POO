@@ -14,9 +14,9 @@ model Book {
   id Int @id @unique @default(autoincrement())
   title String @unique
   yearPub Int
-  pubCompanyId Int @unique
-  authorId Int @unique
-  bookType String @unique
+  pubCompanyId Int
+  authorId Int
+  bookType String
 
   //relations
   pubCompany PubCompany @relation(fields: [pubCompanyId], references: [id])
@@ -25,7 +25,7 @@ model Book {
 
 model Author {
   id Int @id @unique @default(autoincrement())
-  name String @unique
+  name String
   age Int
 
   //relations

@@ -1,30 +1,32 @@
 import User, { UserTypes } from "../Model/User";
-import Database from "../dao/Database";
+import ConnectionController from "./ConnectionController";
 
 export default class UserController {
 
-    private db = new Database();
+    private database = ConnectionController.getConnection();
 
     public async createUser(email: string, password: string, userName: string, userType: UserTypes) {
         try {
-            const userByEmail = await this.db.findUserByEmailDb(email);
+            const userByEmail = await this.database.findUserByEmailDb(email);
             
             if (userByEmail != undefined) {
                 return console.log("\nEmail already registered.");
             }
 
-            const userByUserName = await this.db.findUserByUserNameDb(userName);
+            const userByUserName = await this.database.findUserByUserNameDb(userName);
             
             if (userByUserName != undefined) {
                 return console.log("\nUserName already registered.");
             }
 
-            const user = await this.db.createUserDb(email, password, userName, userType);
-            return console.log("\nUser Created.");
+            await this.database.createUserDb(email, password, userName, userType);
+            //return console.log("\nUser Created.");
 
-            //return new User(email, password, userName, userType);
+            const newUser = new User(email, password, userName, userType);
+            return console.log(newUser);
+            
 
-        } catch (error) {
+        } catch {
             return console.log("Server Error.");
         }
     }

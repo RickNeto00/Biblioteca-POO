@@ -65,7 +65,7 @@ export default class Database {
     }
 
     public async findAuthorByNameDb(name: string) {
-        const author = await prisma.author.findUnique({
+        const author = await prisma.author.findFirst({
             where: {
                 name: name
             }

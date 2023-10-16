@@ -1,4 +1,4 @@
-import { prisma } from "../../db";
+import ConnectionController from "../Controller/ConnectionController";
 
 export enum UserTypes{
     Common = "Common",
@@ -9,9 +9,10 @@ export default class User{
     private email: string;
     private password: string;
     private userName: string;
-    private userType: UserTypes;
+    private userType: string;
 
-    constructor(email: string, password: string, userName: string, userType: UserTypes){
+
+    constructor(email: string, password: string, userName: string, userType: string){
         this.email = email;
         this.password = password;
         this.userName = userName;
@@ -32,7 +33,7 @@ export default class User{
         return this.userName;
     }
 
-    public getUserType(): UserTypes{
+    public getUserType(): string{
         return this.userType;
     }
 
