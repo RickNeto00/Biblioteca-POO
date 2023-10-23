@@ -1,4 +1,3 @@
-import { prisma } from "../../db";
 import Author from "./Author";
 import PubCompany from "./PubCompany";
 
@@ -11,13 +10,15 @@ export enum BookTypes{
 }
 
 export default class Book{
+    private id: number
     private title: string;
     private yearPub: number;
     private pubCompany: PubCompany;
     private author: Author;
     private bookType: BookTypes;
 
-    constructor(title: string, yearPub: number, pubCompany: PubCompany, author: Author, bookType: BookTypes){
+    constructor(id: number, title: string, yearPub: number, pubCompany: PubCompany, author: Author, bookType: BookTypes){
+        this.id = id;
         this.title = title;
         this.yearPub = yearPub;
         this.pubCompany = pubCompany;
@@ -26,6 +27,10 @@ export default class Book{
     }
 
     //GETS
+
+    public getId(): number{
+        return this.id
+    }
 
     public getTitle(): string{
         return this.title;

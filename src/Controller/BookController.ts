@@ -9,19 +9,18 @@ export default class BookController {
     public async createBook(title: string, yearPub: number, pubCompany: PubCompany, author: Author, bookType: BookTypes) {
         try {
 
-            const bookByTitle = this.db.findBookByTitleDb(title);
+            const bookByTitle = this.database.findBookByTitleDb(title);
 
             if (bookByTitle != undefined) {
                 return console.log("Book already exists.");
             }
             
-            await this.db.createBookDb(title, yearPub, pubCompany.getId(), author.getId(), bookType)
-
-            const newBook = new Book(title, yearPub, pubCompany, author, bookType);
+            const bookDb = await this.database.createBookDb(title, yearPub, pubCompany.getId(), author.getId(), bookType);
+            const newBook = new Book(bookDb.id, title, yearPub, pubCompany, author, bookType);
             return newBook;
 
         } catch {
-            
+            return console.log("Something went Wrong");
         }
     }
 }

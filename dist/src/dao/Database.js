@@ -76,7 +76,7 @@ class Database {
     }
     findAuthorByNameDb(name) {
         return __awaiter(this, void 0, void 0, function* () {
-            const author = yield db_1.prisma.author.findUnique({
+            const author = yield db_1.prisma.author.findFirst({
                 where: {
                     name: name
                 }

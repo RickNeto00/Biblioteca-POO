@@ -1,18 +1,18 @@
-import ConnectionController from "../Controller/ConnectionController";
-
 export enum UserTypes{
     Common = "Common",
     Administrator = "Administrator"
 }
 
 export default class User{
+    private id: number;
     private email: string;
     private password: string;
     private userName: string;
     private userType: string;
 
 
-    constructor(email: string, password: string, userName: string, userType: string){
+    constructor(id: number, email: string, password: string, userName: string, userType: string){
+        this.id = id;
         this.email = email;
         this.password = password;
         this.userName = userName;
@@ -20,6 +20,10 @@ export default class User{
     }
 
     //GETS
+
+    public getId(): number{
+        return this.id;
+    }
 
     public getEmail(): string{
         return this.email;

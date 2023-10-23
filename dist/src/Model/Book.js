@@ -9,7 +9,8 @@ var BookTypes;
     BookTypes["Literature"] = "Literature";
 })(BookTypes || (exports.BookTypes = BookTypes = {}));
 class Book {
-    constructor(title, yearPub, pubCompany, author, bookType) {
+    constructor(id, title, yearPub, pubCompany, author, bookType) {
+        this.id = id;
         this.title = title;
         this.yearPub = yearPub;
         this.pubCompany = pubCompany;
@@ -17,6 +18,9 @@ class Book {
         this.bookType = bookType;
     }
     //GETS
+    getId() {
+        return this.id;
+    }
     getTitle() {
         return this.title;
     }

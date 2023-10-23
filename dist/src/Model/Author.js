@@ -1,16 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Author {
-    constructor(name, age) {
+    constructor(id, name, age, publicId) {
+        this.id = id;
         this.name = name;
         this.age = age;
+        this.publicId = publicId;
     }
     //GETS
+    getId() {
+        return this.id;
+    }
     getName() {
         return this.name;
     }
     getAge() {
         return this.age;
+    }
+    getPublicId() {
+        return this.publicId;
     }
     //SETS
     setName(name) {

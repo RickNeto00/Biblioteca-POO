@@ -19,15 +19,13 @@ export default class UserController {
                 return console.log("\nUserName already registered.");
             }
 
-            await this.database.createUserDb(email, password, userName, userType);
-            //return console.log("\nUser Created.");
-
-            const newUser = new User(email, password, userName, userType);
+            const userDb = await this.database.createUserDb(email, password, userName, userType);
+            const newUser = new User(userDb.id, email, password, userName, userType);
             return console.log(newUser);
             
 
         } catch {
-            return console.log("Server Error.");
+            return console.log("Something went Wrong.");
         }
     }
 }

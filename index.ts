@@ -32,7 +32,10 @@ switch (inputChoice) {
 
             if (inputUserType == "2") {
                 user.createUser(inputEmail, inputPassword, inputUserName, UserTypes.Common);
+            } else {
+                console.log("Type a valid number.");
             }
+
         } catch (error) {
             console.log("Sorry, Try Again.");
         }

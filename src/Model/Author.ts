@@ -1,14 +1,14 @@
-import { prisma } from "../../db";
-
 export default class Author{
     private id: number;
     private name: string;
     private age: number;
+    private publicId: string;
 
-    constructor(id: number, name: string, age: number) {
+    constructor(id: number, name: string, age: number, publicId: string) {
         this.id = id
         this.name = name;
         this.age = age;
+        this.publicId = publicId;
     }
 
     //GETS
@@ -23,6 +23,10 @@ export default class Author{
 
     public getAge(): number{
         return this.age;
+    }
+
+    public getPublicId(): string {
+        return this.publicId;
     }
 
     //SETS

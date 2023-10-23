@@ -13,29 +13,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const User_1 = __importDefault(require("../Model/User"));
-const Database_1 = __importDefault(require("../dao/Database"));
+const ConnectionController_1 = __importDefault(require("./ConnectionController"));
 class UserController {
     constructor() {
-        this.db = new Database_1.default();
+        this.database = ConnectionController_1.default.getConnection();
     }
     createUser(email, password, userName, userType) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const userByEmail = yield this.db.findUserByEmailDb(email);
+                const userByEmail = yield this.database.findUserByEmailDb(email);
                 if (userByEmail != undefined) {
                     return console.log("\nEmail already registered.");
                 }
-                const userByUserName = yield this.db.findUserByUserNameDb(userName);
+                const userByUserName = yield this.database.findUserByUserNameDb(userName);
                 if (userByUserName != undefined) {
                     return console.log("\nUserName already registered.");
                 }
-                const user = yield this.db.createUserDb(email, password, userName, userType);
-                //return console.log("\nUser Created.");
-                const newUser = new User_1.default(email, password, userName, userType);
+                const userDb = yield this.database.createUserDb(email, password, userName, userType);
+                const newUser = new User_1.default(userDb.id, email, password, userName, userType);
                 return console.log(newUser);
             }
-            catch (error) {
-                return console.log("Server Error.");
+            catch (_a) {
+                return console.log("Something went Wrong.");
             }
         });
     }

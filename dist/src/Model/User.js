@@ -7,13 +7,17 @@ var UserTypes;
     UserTypes["Administrator"] = "Administrator";
 })(UserTypes || (exports.UserTypes = UserTypes = {}));
 class User {
-    constructor(email, password, userName, userType) {
+    constructor(id, email, password, userName, userType) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.userName = userName;
         this.userType = userType;
     }
     //GETS
+    getId() {
+        return this.id;
+    }
     getEmail() {
         return this.email;
     }
