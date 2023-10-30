@@ -1,13 +1,9 @@
-import UserController from "./src/Controller/UserController";
 import PromptSync = require("prompt-sync");
-import { UserTypes } from "./src/Model/User";
+import createUserView from "./src/View/user/create";
 
-const user = new UserController();
 const prompt = PromptSync();
 let inputEmail: string = "";
 let inputPassword: string = "";
-let inputUserName: string = "";
-let inputUserType: string = "";
 
 console.log("============================= LIBRARY SYSTEM =============================\n");
 console.log("| 1 | -> Register");
@@ -19,22 +15,7 @@ let inputChoice = prompt("Choose an Option: ");
 switch (inputChoice) {
     case "1":
         try {
-            console.log("\n============== REGISTRATION ==============\n");
-            inputEmail = prompt("Email: ");
-            inputPassword = prompt("Password: ");
-            inputUserName = prompt("UserName: ");
-            console.log("Type ( 1 ) to Admin User.\nType ( 2 ) to Common User.");
-            inputUserType = prompt("Choose: ");
-
-            if (inputUserType == "1") {
-                user.createUser(inputEmail, inputPassword, inputUserName, UserTypes.Administrator);
-            }
-
-            if (inputUserType == "2") {
-                user.createUser(inputEmail, inputPassword, inputUserName, UserTypes.Common);
-            } else {
-                console.log("Type a valid number.");
-            }
+            createUserView();
 
         } catch (error) {
             console.log("Sorry, Try Again.");
