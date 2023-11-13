@@ -1,12 +1,13 @@
 import { prisma } from "../../db";
 import { BookTypes } from "../Model/Book";
 import { UserTypes } from "../Model/User";
+import { absDatabase } from "./absDatabase";
 
-export default class Database {
+export default class Database extends absDatabase{
 
     //USER
 
-    public async createUserDb(email: string, password: string, userName: string, userType: UserTypes) {
+    async createUser (email: string, password: string, userName: string, userType: UserTypes) {
         const user = await prisma.user.create({
             data: {
                 email: email,

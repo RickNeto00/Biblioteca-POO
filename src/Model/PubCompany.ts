@@ -1,5 +1,3 @@
-import { prisma } from "../../db";
-
 export default class PubCompany{
     private id: number;
     private name: string;
