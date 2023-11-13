@@ -8,7 +8,7 @@ export default class UserCommonController extends absUserController {
         }
         if (this.database.loginByEmailDb(login, password) == null) {
             return false;
-        }c 
+        }c    
 
     }
 
