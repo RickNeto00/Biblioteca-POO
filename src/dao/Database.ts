@@ -1,9 +1,8 @@
 import { prisma } from "../../db";
 import { BookTypes } from "../Model/Book";
 import { UserTypes } from "../Model/User";
-import { absDatabase } from "./absDatabase";
 
-export default class Database extends absDatabase{
+export default class Database{
 
     //USER
 
