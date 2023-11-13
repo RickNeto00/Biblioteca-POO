@@ -2,10 +2,13 @@ import Author from "../Model/Author";
 import Book, { BookTypes } from "../Model/Book";
 import PubCompany from "../Model/PubCompany";
 import ConnectionController from "./ConnectionController";
+import { interfaceSelect } from "./interfaceSelect";
 
-export default class BookController {
+export default class BookController implements interfaceSelect<Book> {
     private database = ConnectionController.getConnection();
 
+    public selectAll: () => Book;
+    
     public async createBook(title: string, yearPub: number, pubCompany: PubCompany, author: Author, bookType: BookTypes) {
         try {
 

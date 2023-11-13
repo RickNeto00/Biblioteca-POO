@@ -1,3 +1,5 @@
+// https://www.treinaweb.com.br/blog/classes-abstratas-vs-interfaces
+
 import PromptSync = require("prompt-sync");
 import createUserView from "./src/View/user/create";
 
