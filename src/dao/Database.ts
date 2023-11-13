@@ -37,7 +37,17 @@ export default class Database {
         return user;
     }
 
-    public async findUserByLoginDb(email: string, password: string) {
+    public async loginByUsernameDb(userName: string, password: string) {
+        const user = await prisma.user.findUnique({
+            where: {
+                userName: userName,
+                password: password
+            }
+        })
+        return user;
+    }
+
+    public async loginByEmailDb(email: string, password: string) {
         const user = await prisma.user.findUnique({
             where: {
                 email: email,
