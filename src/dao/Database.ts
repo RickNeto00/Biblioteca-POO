@@ -2,11 +2,11 @@ import { prisma } from "../../db";
 import { BookTypes } from "../Model/Book";
 import { UserTypes } from "../Model/User";
 
-export default class Database{
+export default class Database {
 
     //USER
 
-    async createUser (email: string, password: string, userName: string, userType: UserTypes) {
+    async createUserDb (email: string, password: string, userName: string, userType: UserTypes) {
         const user = await prisma.user.create({
             data: {
                 email: email,
@@ -81,6 +81,11 @@ export default class Database{
             }
         });
         return author;
+    }
+
+    public async selectAuthorsDb() {
+        const authors = await prisma.author.findMany();
+        return authors;
     }
 
     //PUBCOMPANY

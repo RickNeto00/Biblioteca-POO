@@ -1,3 +1,3 @@
-export interface interfaceSelect<T> {
-    selectAll: () => T;
+export interface interfaceSelect {
+    selectAll(): Promise<{}[]>;
 }

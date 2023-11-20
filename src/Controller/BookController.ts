@@ -4,10 +4,23 @@ import PubCompany from "../Model/PubCompany";
 import ConnectionController from "./ConnectionController";
 import { interfaceSelect } from "./interfaceSelect";
 
-export default class BookController implements interfaceSelect<Book> {
+export default class BookController implements interfaceSelect {
     private database = ConnectionController.getConnection();
+    
+    selectAll(): Promise<{}[]> { 
+        /*let book: string = "";
+        let books: Book[] = [];
 
-    public selectAll: () => Book;
+        for (let i = 0; i < books.length; i++) {
+           const element = books[i];
+           book = book + "Title: " + element.getTitle + " Author: " + element.getAuthor + " Book type: " + element.getBookType + "\n";
+        }
+
+        return book;*/
+        const books = this.database.selectBooksDb();
+        return books;
+
+    }
     
     public async createBook(title: string, yearPub: number, pubCompany: PubCompany, author: Author, bookType: BookTypes) {
         try {

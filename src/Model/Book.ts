@@ -1,6 +1,5 @@
 import Author from "./Author";
 import PubCompany from "./PubCompany";
-import Publication, { PublicationEnum } from "./Publication";
 
 export enum BookTypes{
     Adventure = "Adventure",
@@ -10,7 +9,7 @@ export enum BookTypes{
     
 }
 
-export default class Book extends Publication{
+export default class Book{
     private id: number
     private title: string;
     private yearPub: number;
@@ -18,8 +17,7 @@ export default class Book extends Publication{
     private author: Author;
     private bookType: BookTypes;
 
-    constructor(id: number, title: string, yearPub: number, pubCompany: PubCompany, author: Author, bookType: BookTypes, typeOfPublish: PublicationEnum) {
-        super(typeOfPublish);
+    constructor(id: number, title: string, yearPub: number, pubCompany: PubCompany, author: Author, bookType: BookTypes) {
         this.id = id;
         this.title = title;
         this.yearPub = yearPub;
@@ -74,10 +72,6 @@ export default class Book extends Publication{
 
     public setBookType(bookType: BookTypes): void{
         this.bookType = bookType;
-    }
-
-    defyPublishType(type: string): void {
-        this.typeOfPublish = type;
     }
 }
 
