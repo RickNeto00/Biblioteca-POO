@@ -1,53 +1,36 @@
 "use strict";
+// https://www.treinaweb.com.br/blog/classes-abstratas-vs-interfaces
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const UserController_1 = __importDefault(require("./src/Controller/UserController"));
 const PromptSync = require("prompt-sync");
-const User_1 = require("./src/Model/User");
-const user = new UserController_1.default();
+const create_1 = __importDefault(require("./src/View/user/create"));
+const UserAdmController_1 = __importDefault(require("./src/Controller/UserAdmController"));
+const login_1 = __importDefault(require("./src/View/user/login"));
 const prompt = PromptSync();
+const user = new UserAdmController_1.default();
 let inputEmail = "";
 let inputPassword = "";
-let inputUserName = "";
-let inputUserType = "";
 console.log("============================= LIBRARY SYSTEM =============================\n");
 console.log("| 1 | -> Register");
-console.log("| 2 | -> Login\n");
-console.log("| 3 | -> Create Book\n");
+console.log("| 2 | -> Login");
+console.log("| 3 | -> Create Book");
+console.log("| 4 | -> Select All\n");
 let inputChoice = prompt("Choose an Option: ");
 switch (inputChoice) {
     case "1":
-        try {
-            console.log("\n============== REGISTRATION ==============\n");
-            inputEmail = prompt("Email: ");
-            inputPassword = prompt("Password: ");
-            inputUserName = prompt("UserName: ");
-            console.log("Type ( 1 ) to Admin User.\nType ( 2 ) to Common User.");
-            inputUserType = prompt("Choose: ");
-            if (inputUserType == "1") {
-                user.createUser(inputEmail, inputPassword, inputUserName, User_1.UserTypes.Administrator);
-            }
-            if (inputUserType == "2") {
-                user.createUser(inputEmail, inputPassword, inputUserName, User_1.UserTypes.Common);
-            }
-            else {
-                console.log("Type a valid number.");
-            }
-        }
-        catch (error) {
-            console.log("Sorry, Try Again.");
-        }
+        (0, create_1.default)();
         break;
     case "2":
-        console.log("\n============== LOGIN ==============\n");
-        inputEmail = prompt("Email: ");
-        inputPassword = prompt("Password: ");
+        (0, login_1.default)();
         break;
     case "3":
         console.log("\n============== CREATE A BOOK ==============\n");
         let inputBookTitle = prompt("Title: ");
+        break;
+    case "4":
+        user.selectAll();
         break;
     default:
         console.log("Type a Valid Number.");

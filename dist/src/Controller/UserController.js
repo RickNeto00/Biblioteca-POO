@@ -31,7 +31,7 @@ class UserController {
                 }
                 const userDb = yield this.database.createUserDb(email, password, userName, userType);
                 const newUser = new User_1.default(userDb.id, email, password, userName, userType);
-                return console.log(newUser);
+                return console.log(userDb);
             }
             catch (_a) {
                 return console.log("Something went Wrong.");

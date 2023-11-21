@@ -45,7 +45,18 @@ class Database {
             return user;
         });
     }
-    findUserByLoginDb(email, password) {
+    loginByUsernameDb(userName, password) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield db_1.prisma.user.findUnique({
+                where: {
+                    userName: userName,
+                    password: password
+                }
+            });
+            return user;
+        });
+    }
+    loginByEmailDb(email, password) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = yield db_1.prisma.user.findUnique({
                 where: {
@@ -82,6 +93,12 @@ class Database {
                 }
             });
             return author;
+        });
+    }
+    selectAuthorsDb() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const authors = yield db_1.prisma.author.findMany();
+            return authors;
         });
     }
     //PUBCOMPANY

@@ -18,6 +18,19 @@ class BookController {
     constructor() {
         this.database = ConnectionController_1.default.getConnection();
     }
+    selectAll() {
+        /*let book: string = "";
+        let books: Book[] = [];
+
+        for (let i = 0; i < books.length; i++) {
+           const element = books[i];
+           book = book + "Title: " + element.getTitle + " Author: " + element.getAuthor + " Book type: " + element.getBookType + "\n";
+        }
+
+        return book;*/
+        const books = this.database.selectBooksDb();
+        return books;
+    }
     createBook(title, yearPub, pubCompany, author, bookType) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

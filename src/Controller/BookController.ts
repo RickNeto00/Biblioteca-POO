@@ -7,7 +7,7 @@ import { interfaceSelect } from "./interfaceSelect";
 export default class BookController implements interfaceSelect {
     private database = ConnectionController.getConnection();
     
-    selectAll(): Promise<{}[]> { 
+    selectAll(): string { 
         /*let book: string = "";
         let books: Book[] = [];
 

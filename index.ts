@@ -2,40 +2,40 @@
 
 import PromptSync = require("prompt-sync");
 import createUserView from "./src/View/user/create";
+import UserAdmController from "./src/Controller/UserAdmController";
+import loginUserView from "./src/View/user/login";
 
 const prompt = PromptSync();
+const user = new UserAdmController();
 let inputEmail: string = "";
 let inputPassword: string = "";
 
 console.log("============================= LIBRARY SYSTEM =============================\n");
 console.log("| 1 | -> Register");
-console.log("| 2 | -> Login\n");
-console.log("| 3 | -> Create Book\n");
+console.log("| 2 | -> Login");
+console.log("| 3 | -> Create Book");
+console.log("| 4 | -> Select All\n");
 
 let inputChoice = prompt("Choose an Option: ");
 
 switch (inputChoice) {
     case "1":
-        try {
-            createUserView();
-
-        } catch (error) {
-            console.log("Sorry, Try Again.");
-        }
-        
+        createUserView();
         break;
 
     case "2":
-        console.log("\n============== LOGIN ==============\n");
-        inputEmail = prompt("Email: ");
-        inputPassword = prompt("Password: ");
-
+        loginUserView();
         break;
 
     case "3":
         console.log("\n============== CREATE A BOOK ==============\n");
         let inputBookTitle = prompt("Title: ");
 
+        break;
+
+    case "4":
+        user.selectAll();
+        
         break;
 
     default:

@@ -1,3 +1,3 @@
 export interface interfaceSelect {
-    selectAll(): Promise<{}[]>;
+    selectAll(): any;
 }

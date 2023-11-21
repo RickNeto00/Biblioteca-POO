@@ -18,6 +18,19 @@ class AuthorController {
     constructor() {
         this.database = ConnectionController_1.default.getConnection();
     }
+    selectAll() {
+        /*let author: string = "";
+        let authors: Author[] = [];
+
+        for (let i = 0; i < authors.length; i++) {
+           const element = authors[i];
+           author = author + "Name: " + element.getName + " Age: " + element.getAge + "\n";
+        }
+
+        return author;*/
+        const authors = this.database.selectAuthorsDb();
+        return authors;
+    }
     createAuthor(name, age) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

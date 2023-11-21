@@ -21,7 +21,7 @@ export default class UserController {
 
             const userDb = await this.database.createUserDb(email, password, userName, userType);
             const newUser = new User(userDb.id, email, password, userName, userType);
-            return console.log(newUser);
+            return console.log(userDb);
             
 
         } catch {
