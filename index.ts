@@ -7,8 +7,6 @@ import loginUserView from "./src/View/user/login";
 
 const prompt = PromptSync();
 const user = new UserAdmController();
-let inputEmail: string = "";
-let inputPassword: string = "";
 
 console.log("============================= LIBRARY SYSTEM =============================\n");
 console.log("| 1 | -> Register");

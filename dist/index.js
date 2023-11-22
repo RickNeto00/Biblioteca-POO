@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.concat = exports.double = void 0;
 const PromptSync = require("prompt-sync");
 const create_1 = __importDefault(require("./src/View/user/create"));
 const UserAdmController_1 = __importDefault(require("./src/Controller/UserAdmController"));
@@ -36,3 +37,11 @@ switch (inputChoice) {
         console.log("Type a Valid Number.");
         break;
 }
+function double(x) {
+    return x * 2;
+}
+exports.double = double;
+function concat(...args) {
+    return args.reduce((result, param) => result + param, '');
+}
+exports.concat = concat;

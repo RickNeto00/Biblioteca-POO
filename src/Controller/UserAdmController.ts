@@ -62,10 +62,6 @@ export default class UserAdmController extends absUserController implements inte
         }
     }
 
-    public async select() {
-
-    }
-
     async selectAll() {
         try {
             const users = await this.database.selectUsersDb();

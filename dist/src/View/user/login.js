@@ -15,12 +15,9 @@ function loginUserView() {
     inputPassword = prompt("Password: ");
     if (login.includes("@")) {
         checkUser.login(inputPassword, login, null);
-        console.log("teste1");
     }
     else {
-        console.log(login);
         checkUser.login(inputPassword, null, login);
-        console.log("teste2");
     }
 }
 exports.default = loginUserView;
