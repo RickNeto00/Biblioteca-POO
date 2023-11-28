@@ -1,16 +1,37 @@
+import loginUserView from "../View/user/login";
 import absUserController from "./absUserController";
 
 export default class UserCommonController extends absUserController {
     
-    async login(login: string, password: string) {
-        const loginByUsername = await this.database.loginByUsernameDb(login, password);
-        const loginByEmail = await this.database.loginByEmailDb(login, password);
+    async login(password: string, email: string | null, userName: string | null) {
+        try {
+            if (email) {
+                const loginByEmail = await this.database.loginByEmailDb(email, password);
 
-        if (loginByUsername && loginByEmail == null){
-            return "User not Found.";
+                if (loginByEmail == undefined) {
+                    console.log("User not Found");
+                    return loginUserView();
+                }
+
+                console.log("User Found");
+                return homeCommonUser();
+            }
+
+            if (userName) {
+                const loginByUsername = await this.database.loginByUsernameDb(userName, password);                
+
+                if (loginByUsername == undefined) {
+                    console.log("User not Found");
+                    return loginUserView();
+                }
+
+                console.log("User Found");
+                return homeCommonUser();
+            }
+
+        } catch (error) {
+            return console.log("Something went Wrong");
         }
-
-        return "User logged";
     }
 
 }

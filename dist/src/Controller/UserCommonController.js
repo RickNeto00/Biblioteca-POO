@@ -12,16 +12,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const login_1 = __importDefault(require("../View/user/login"));
 const absUserController_1 = __importDefault(require("./absUserController"));
 class UserCommonController extends absUserController_1.default {
-    login(login, password) {
+    login(password, email, userName) {
         return __awaiter(this, void 0, void 0, function* () {
-            const loginByUsername = yield this.database.loginByUsernameDb(login, password);
-            const loginByEmail = yield this.database.loginByEmailDb(login, password);
-            if (loginByUsername && loginByEmail == null) {
-                return "User not Found.";
+            try {
+                if (email) {
+                    const loginByEmail = yield this.database.loginByEmailDb(email, password);
+                    if (loginByEmail == undefined) {
+                        console.log("User not Found");
+                        return (0, login_1.default)();
+                    }
+                    console.log("User Found");
+                    return homeCommonUser();
+                }
+                if (userName) {
+                    const loginByUsername = yield this.database.loginByUsernameDb(userName, password);
+                    if (loginByUsername == undefined) {
+                        console.log("User not Found");
+                        return (0, login_1.default)();
+                    }
+                    console.log("User Found");
+                    return homeCommonUser();
+                }
             }
-            return "User logged";
+            catch (error) {
+                return console.log("Something went Wrong");
+            }
         });
     }
 }

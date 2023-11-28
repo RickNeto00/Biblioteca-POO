@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const __1 = __importDefault(require("../.."));
 const User_1 = __importDefault(require("../Model/User"));
 const ConnectionController_1 = __importDefault(require("./ConnectionController"));
 class UserController {
@@ -23,15 +24,18 @@ class UserController {
             try {
                 const userByEmail = yield this.database.findUserByEmailDb(email);
                 if (userByEmail != undefined) {
-                    return console.log("\nEmail already registered.");
+                    console.log("\nEmail already registered.");
+                    return (0, __1.default)();
                 }
                 const userByUserName = yield this.database.findUserByUserNameDb(userName);
                 if (userByUserName != undefined) {
-                    return console.log("\nUserName already registered.");
+                    console.log("\nUserName already registered.");
+                    return (0, __1.default)();
                 }
                 const userDb = yield this.database.createUserDb(email, password, userName, userType);
                 const newUser = new User_1.default(userDb.id, email, password, userName, userType);
-                return console.log(userDb);
+                console.log("User Created");
+                return (0, __1.default)();
             }
             catch (_a) {
                 return console.log("Something went Wrong.");

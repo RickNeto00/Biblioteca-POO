@@ -4,16 +4,14 @@ import UserAdmController from "../../Controller/UserAdmController";
 export default function loginUserView() {
     const checkUser = new UserAdmController();
     const prompt = PromptSync();
-    let login: string;
-    let inputPassword: string;
 
     console.log("\n============== LOGIN ==============\n");
-    login = prompt("Login: ");
-    inputPassword = prompt("Password: ");
+    let login = prompt("Login (Email or Username): ");
+    let inputPassword = prompt("Password: ");
 
     if (login.includes("@")) {
         checkUser.login(inputPassword, login, null);
     } else {
-        checkUser.login(inputPassword, null, login)
+        checkUser.login(inputPassword, null, login);
     }
 }

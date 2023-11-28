@@ -1,5 +1,6 @@
-//import * as testUser from "../Model/User";
 import User, { UserTypes } from "../Model/User";
+import homeAdmin from "../View/admin/home";
+import loginUserView from "../View/user/login";
 import absUserController from "./absUserController";
 import { interfaceSelect } from "./interfaceSelect";
 
@@ -10,27 +11,27 @@ export default class UserAdmController extends absUserController implements inte
             if (email) {
                 const loginByEmail = await this.database.loginByEmailDb(email, password);
 
-                console.log(loginByEmail);
-
                 if (loginByEmail == undefined) {
-                    return console.log("User not Found");
+                    console.log("User not Found");
+                    return loginUserView();
                 }
 
-                return console.log("User Found");
+                console.log("User Found");
+                return homeAdmin();
             }
 
             if (userName) {
-                const loginByUsername = await this.database.loginByUsernameDb(userName, password);
-
-                console.log(loginByUsername);
-                
+                const loginByUsername = await this.database.loginByUsernameDb(userName, password);                
 
                 if (loginByUsername == undefined) {
-                    return console.log("User not Found");
+                    console.log("User not Found");
+                    return loginUserView();
                 }
 
-                return console.log("User Found");
+                console.log("User Found");
+                return homeAdmin();
             }
+
         } catch (error) {
             return console.log("Something went Wrong");
         }
@@ -72,7 +73,7 @@ export default class UserAdmController extends absUserController implements inte
             }
 
             return console.log(user);
-
+            
         } catch (error) {
             return console.log({ message: "Something went Wrong" });
         }

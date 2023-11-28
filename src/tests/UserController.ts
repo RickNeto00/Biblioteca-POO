@@ -1,5 +1,6 @@
+/*import index from "../..";
 import User, { UserTypes } from "../Model/User";
-import ConnectionController from "./ConnectionController";
+import ConnectionController from "../Controller/ConnectionController";
 
 export default class UserController {
 
@@ -10,22 +11,24 @@ export default class UserController {
             const userByEmail = await this.database.findUserByEmailDb(email);
             
             if (userByEmail != undefined) {
-                return console.log("\nEmail already registered.");
+                console.log("\nEmail already registered.");
+                return index();
             }
 
             const userByUserName = await this.database.findUserByUserNameDb(userName);
             
             if (userByUserName != undefined) {
-                return console.log("\nUserName already registered.");
+                console.log("\nUserName already registered.");
+                return index();
             }
 
             const userDb = await this.database.createUserDb(email, password, userName, userType);
             const newUser = new User(userDb.id, email, password, userName, userType);
-            return console.log(userDb);
-            
+            console.log("User Created");
+            return index();
 
         } catch {
             return console.log("Something went Wrong.");
         }
     }
-}
+}*/

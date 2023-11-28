@@ -12,8 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-//import * as testUser from "../Model/User";
 const User_1 = __importDefault(require("../Model/User"));
+const home_1 = __importDefault(require("../View/admin/home"));
+const login_1 = __importDefault(require("../View/user/login"));
 const absUserController_1 = __importDefault(require("./absUserController"));
 class UserAdmController extends absUserController_1.default {
     login(password, email, userName) {
@@ -21,19 +22,21 @@ class UserAdmController extends absUserController_1.default {
             try {
                 if (email) {
                     const loginByEmail = yield this.database.loginByEmailDb(email, password);
-                    console.log(loginByEmail);
                     if (loginByEmail == undefined) {
-                        return console.log("User not Found");
+                        console.log("User not Found");
+                        return (0, login_1.default)();
                     }
-                    return console.log("User Found");
+                    console.log("User Found");
+                    return (0, home_1.default)();
                 }
                 if (userName) {
                     const loginByUsername = yield this.database.loginByUsernameDb(userName, password);
-                    console.log(loginByUsername);
                     if (loginByUsername == undefined) {
-                        return console.log("User not Found");
+                        console.log("User not Found");
+                        return (0, login_1.default)();
                     }
-                    return console.log("User Found");
+                    console.log("User Found");
+                    return (0, home_1.default)();
                 }
             }
             catch (error) {
@@ -60,10 +63,6 @@ class UserAdmController extends absUserController_1.default {
             catch (_a) {
                 return console.log("Something went Wrong.");
             }
-        });
-    }
-    select() {
-        return __awaiter(this, void 0, void 0, function* () {
         });
     }
     selectAll() {

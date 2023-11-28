@@ -6,15 +6,28 @@ CREATE TABLE "Book" (
     "pubCompanyId" INTEGER NOT NULL,
     "authorId" INTEGER NOT NULL,
     "bookType" TEXT NOT NULL,
+    "availability" BOOLEAN NOT NULL DEFAULT true,
     CONSTRAINT "Book_pubCompanyId_fkey" FOREIGN KEY ("pubCompanyId") REFERENCES "PubCompany" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT "Book_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "Author" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Lending" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "userId" INTEGER NOT NULL,
+    "bookId" INTEGER NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    CONSTRAINT "Lending_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "Lending_bookId_fkey" FOREIGN KEY ("bookId") REFERENCES "Book" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "Author" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
-    "age" INTEGER NOT NULL
+    "age" INTEGER,
+    "publicId" TEXT NOT NULL
 );
 
 -- CreateTable
@@ -40,19 +53,10 @@ CREATE UNIQUE INDEX "Book_id_key" ON "Book"("id");
 CREATE UNIQUE INDEX "Book_title_key" ON "Book"("title");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Book_pubCompanyId_key" ON "Book"("pubCompanyId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Book_authorId_key" ON "Book"("authorId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Book_bookType_key" ON "Book"("bookType");
-
--- CreateIndex
 CREATE UNIQUE INDEX "Author_id_key" ON "Author"("id");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Author_name_key" ON "Author"("name");
+CREATE UNIQUE INDEX "Author_publicId_key" ON "Author"("publicId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_id_key" ON "User"("id");
