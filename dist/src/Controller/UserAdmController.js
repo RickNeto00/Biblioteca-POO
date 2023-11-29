@@ -16,7 +16,7 @@ const User_1 = __importDefault(require("../Model/User"));
 const home_1 = __importDefault(require("../View/admin/home"));
 const login_1 = __importDefault(require("../View/user/login"));
 const absUserController_1 = __importDefault(require("./absUserController"));
-class UserAdmController extends absUserController_1.default {
+class UserAdmController extends absUserController_1.default /*implements interfaceSelect*/ {
     login(password, email, userName) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

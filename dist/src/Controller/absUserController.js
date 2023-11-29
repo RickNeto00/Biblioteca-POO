@@ -3,10 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const ConnectionController_1 = __importDefault(require("./ConnectionController"));
-class absUserController {
-    constructor() {
-        this.database = ConnectionController_1.default.getConnection();
-    }
+const Operation_1 = __importDefault(require("../Model/Operation"));
+class absUserController extends Operation_1.default {
 }
 exports.default = absUserController;

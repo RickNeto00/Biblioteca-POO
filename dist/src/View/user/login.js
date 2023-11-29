@@ -12,10 +12,10 @@ function loginUserView() {
     let login = prompt("Login (Email or Username): ");
     let inputPassword = prompt("Password: ");
     if (login.includes("@")) {
-        checkUser.login(inputPassword, login, null);
+        checkUser.login(inputPassword, login, undefined);
     }
     else {
-        checkUser.login(inputPassword, null, login);
+        checkUser.login(inputPassword, undefined, login);
     }
 }
 exports.default = loginUserView;

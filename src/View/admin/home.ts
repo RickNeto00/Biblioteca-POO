@@ -1,9 +1,11 @@
 import PromptSync from "prompt-sync";
 import homeUser from "./user";
 import index from "../../..";
+import BookController from "../../Controller/BookController";
 
 export default function homeAdmin() {
     const prompt = PromptSync();
+    const book = new BookController();
 
     console.log("\n============================= ADMIN PAGE =============================\n");
     console.log("| 1 | -> User");
@@ -20,7 +22,7 @@ export default function homeAdmin() {
             homeUser();
             break;
         case "2":
-            
+            book.select();
             break;
         case "3":
             

@@ -1,11 +1,14 @@
 import Author from "../Model/Author";
 import Book, { BookTypes } from "../Model/Book";
+import Operation from "../Model/Operation";
 import PubCompany from "../Model/PubCompany";
 import ConnectionController from "./ConnectionController";
 import { interfaceSelect } from "./interfaceSelect";
 
 export default class BookController {
     private database = ConnectionController.getConnection();
+
+    private book: Operation<Book> = new Operation<Book>;
     
     public async createBook(title: string, yearPub: number, pubCompany: PubCompany, author: Author, bookType: BookTypes) {
         try {
@@ -24,4 +27,11 @@ export default class BookController {
             return console.log("Something went Wrong");
         }
     }
+    
+    public async select() {
+        const bookByTitle = this.database.findBookByTitleDb("LivroTeste");
+
+        await this.book.selectAll(bookByTitle);
+    }
+
 }

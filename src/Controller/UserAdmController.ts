@@ -4,9 +4,9 @@ import loginUserView from "../View/user/login";
 import absUserController from "./absUserController";
 import { interfaceSelect } from "./interfaceSelect";
 
-export default class UserAdmController extends absUserController implements interfaceSelect {
+export default class UserAdmController extends absUserController /*implements interfaceSelect*/ {
     
-    async login(password: string, email: string | null, userName: string | null) {
+    async login(password: string, email?: string, userName?: string) {
         try {
             if (email) {
                 const loginByEmail = await this.database.loginByEmailDb(email, password);

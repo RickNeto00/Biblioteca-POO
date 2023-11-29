@@ -6,8 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
 const user_1 = __importDefault(require("./user"));
 const __1 = __importDefault(require("../../.."));
+const BookController_1 = __importDefault(require("../../Controller/BookController"));
 function homeAdmin() {
     const prompt = (0, prompt_sync_1.default)();
+    const book = new BookController_1.default();
     console.log("\n============================= ADMIN PAGE =============================\n");
     console.log("| 1 | -> User");
     console.log("| 2 | -> Book");
@@ -21,6 +23,7 @@ function homeAdmin() {
             (0, user_1.default)();
             break;
         case "2":
+            book.select();
             break;
         case "3":
             break;

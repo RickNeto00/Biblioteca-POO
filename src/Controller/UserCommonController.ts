@@ -3,7 +3,7 @@ import absUserController from "./absUserController";
 
 export default class UserCommonController extends absUserController {
     
-    async login(password: string, email: string | null, userName: string | null) {
+    async login(password: string, email?: string, userName?: string) {
         try {
             if (email) {
                 const loginByEmail = await this.database.loginByEmailDb(email, password);

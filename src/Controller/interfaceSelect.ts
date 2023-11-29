@@ -1,3 +1,3 @@
-export interface interfaceSelect {
-    selectAll(): any;
+export interface interfaceSelect<T> {
+    selectAll(obj: T): any;
 }

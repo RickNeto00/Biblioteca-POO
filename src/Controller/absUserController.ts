@@ -1,8 +1,8 @@
+import Operation from "../Model/Operation";
+import User from "../Model/User";
 import ConnectionController from "./ConnectionController";
 
-export default abstract class absUserController {
+export default abstract class absUserController extends Operation<User> {
 
-    protected database = ConnectionController.getConnection();
-
-    abstract login(password: string, email: string | null, userName: string | null): any;
+    abstract login(password: string, email?: string, userName?: string ): any;
 }
