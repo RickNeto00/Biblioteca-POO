@@ -1,11 +1,11 @@
 import PromptSync from "prompt-sync";
-import homeAdmin from "./home";
+import home from "../admin/home";
 import UserAdmController from "../../Controller/UserAdmController";
-import createUserViewAdmin from "./createUser";
+import createUserViewAdmin from "../admin/createUser";
 
-export default async function homeUser() {
+export default async function user() {
     const prompt = PromptSync();
-    const user = new UserAdmController();
+    const userControleler = new UserAdmController();
     console.log("\n============== USER OPTIONS ==============\n");
     console.log("| 1 | -> Create a User");
     console.log("| 2 | -> Edit a User");
@@ -26,18 +26,18 @@ export default async function homeUser() {
             
             break;
         case "4":
-            await user.selectAll();
-            homeUser();
+            await userControleler.selectAll();
+            homeAdmin();
             break;
         case "5":
-            homeAdmin();
+            home();
             break;
         case "0":
             console.log("You choose Exit");
             break;               
         default:
             console.log("Type a Valid Number.");
-            homeUser();
+            user();
             break;
     }
 }

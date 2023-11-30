@@ -90,7 +90,7 @@ export default class Database {
 
     //PUBCOMPANY
 
-    public async createPubCompanyDb(name: string, foundationDate: string) {
+    public async createPubCompanyDb(name: string, foundationDate: number) {
         const pubCompany = await prisma.pubCompany.create({
             data: {
                 name: name,

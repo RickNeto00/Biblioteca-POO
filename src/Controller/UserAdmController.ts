@@ -1,5 +1,6 @@
 import User, { UserTypes } from "../Model/User";
 import homeAdmin from "../View/admin/home";
+import homeUser from "../View/user/user";
 import loginUserView from "../View/user/login";
 import absUserController from "./absUserController";
 import { interfaceSelect } from "./interfaceSelect";
@@ -42,7 +43,8 @@ export default class UserAdmController extends absUserController /*implements in
             const userByEmail = await this.database.findUserByEmailDb(email);
             
             if (userByEmail != undefined) {
-                return console.log("\nEmail already registered.");
+                console.log("\nEmail already registered.");
+                return homeUser();
             }
 
             const userByUserName = await this.database.findUserByUserNameDb(userName);

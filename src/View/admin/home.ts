@@ -1,9 +1,10 @@
 import PromptSync from "prompt-sync";
-import homeUser from "./user";
+import homeUser from "../user/user";
 import index from "../../..";
 import BookController from "../../Controller/BookController";
+import homePubCompany from "../pubCompany/home";
 
-export default function homeAdmin() {
+export default function home() {
     const prompt = PromptSync();
     const book = new BookController();
 
@@ -11,7 +12,7 @@ export default function homeAdmin() {
     console.log("| 1 | -> User");
     console.log("| 2 | -> Book");
     console.log("| 3 | -> Author");
-    console.log("| 4 | -> Publication Company");
+    console.log("| 4 | -> Publisher Company");
     console.log("| 5 | -> Logout");
     console.log("| 0 | -> Exit\n");
 
@@ -22,13 +23,13 @@ export default function homeAdmin() {
             homeUser();
             break;
         case "2":
-            book.select();
+            book.selectBooks();
             break;
         case "3":
             
             break;
         case "4":
-            
+            homePubCompany();
             break;
         case "5":
             index();
@@ -38,7 +39,7 @@ export default function homeAdmin() {
             break;                    
         default:
             console.log("Type a Valid Number.");
-            homeAdmin();
+            home();
             break;
     }
 }

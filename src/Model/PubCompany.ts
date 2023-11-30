@@ -1,9 +1,9 @@
 export default class PubCompany{
     private id: number;
     private name: string;
-    private foundationDate: string;
+    private foundationDate: number;
 
-    constructor(id: number, name: string, foundationDate: string){
+    constructor(id: number, name: string, foundationDate: number){
         this.id = id;
         this.name = name;
         this.foundationDate = foundationDate;
@@ -19,7 +19,7 @@ export default class PubCompany{
         return this.name;
     }
 
-    public getFoudationDate(): string{
+    public getFoudationDate(): number{
         return this.foundationDate;
     }
 
@@ -29,7 +29,7 @@ export default class PubCompany{
         this.name = name;
     }
 
-    public setFoundationDate(foundationDate: string): void{
+    public setFoundationDate(foundationDate: number): void{
         this.foundationDate = foundationDate;
     }
 }

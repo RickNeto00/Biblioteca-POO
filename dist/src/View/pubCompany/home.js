@@ -15,22 +15,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
 const home_1 = __importDefault(require("../admin/home"));
 const UserAdmController_1 = __importDefault(require("../../Controller/UserAdmController"));
-const createUser_1 = __importDefault(require("../admin/createUser"));
-function homeUser() {
+const create_1 = __importDefault(require("./create"));
+function homePubCompany() {
     return __awaiter(this, void 0, void 0, function* () {
         const prompt = (0, prompt_sync_1.default)();
         const user = new UserAdmController_1.default();
-        console.log("\n============== USER OPTIONS ==============\n");
-        console.log("| 1 | -> Create a User");
-        console.log("| 2 | -> Edit a User");
-        console.log("| 3 | -> Find a User");
-        console.log("| 4 | -> Select all Users");
+        console.log("\n============== PUBLISHER COMPANY OPTIONS ==============\n");
+        console.log("| 1 | -> Create a Publisher Company");
+        console.log("| 2 | -> Edit a Publisher Company");
+        console.log("| 3 | -> Find a Publisher Company");
+        console.log("| 4 | -> Select all Companies");
         console.log("| 5 | -> Return to Admin Page");
         console.log("| 0 | -> Exit\n");
         let choice = prompt("Choose an Option: ");
         switch (choice) {
             case "1":
-                (0, createUser_1.default)();
+                (0, create_1.default)();
                 break;
             case "2":
                 break;
@@ -53,4 +53,4 @@ function homeUser() {
         }
     });
 }
-exports.default = homeUser;
+exports.default = homePubCompany;

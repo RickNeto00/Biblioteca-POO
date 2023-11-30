@@ -4,7 +4,7 @@ import ConnectionController from "./ConnectionController";
 export default class PubCompanyController {
     private database = ConnectionController.getConnection();
 
-    public async createPubCompany(name: string, foundationDate: string) {
+    public async createPubCompany(name: string, foundationDate: number) {
         try {
             const pubCompanyByName = this.database.findPubCompanyByNameDb(name);
 

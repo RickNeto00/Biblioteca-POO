@@ -10,14 +10,14 @@ export enum BookTypes{
 }
 
 export default class Book{
-    private id: number
-    private title: string;
-    private yearPub: number;
-    private pubCompany: PubCompany;
-    private author: Author;
-    private bookType: BookTypes;
+    private id?: number;
+    private title?: string;
+    private yearPub?: number;
+    private pubCompany?: PubCompany;
+    private author?: Author;
+    private bookType?: BookTypes;
 
-    constructor(id: number, title: string, yearPub: number, pubCompany: PubCompany, author: Author, bookType: BookTypes) {
+    constructor(id: any, title: any, yearPub: any, pubCompany: any, author: any, bookType: any) {
         this.id = id;
         this.title = title;
         this.yearPub = yearPub;
@@ -28,27 +28,27 @@ export default class Book{
 
     //GETS
 
-    public getId(): number{
+    public getId(): any{
         return this.id
     }
 
-    public getTitle(): string{
+    public getTitle(): any{
         return this.title;
     }
 
-    public getYearPub(): number{
+    public getYearPub(): any{
         return this.yearPub;
     }
 
-    public getPubCompany(): PubCompany{
+    public getPubCompany(): any{
         return this.pubCompany;
     }
 
-    public getAuthor(): Author{
+    public getAuthor(): any{
         return this.author;
     }
 
-    public getBookType(): BookTypes{
+    public getBookType(): any{
         return this.bookType;
     }
 

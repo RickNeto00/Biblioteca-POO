@@ -13,28 +13,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
-const User_1 = require("../../Model/User");
-const UserAdmController_1 = __importDefault(require("../../Controller/UserAdmController"));
-function createUserView() {
+const PubCompanyController_1 = __importDefault(require("../../Controller/PubCompanyController"));
+function createPubCompany() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const user = new UserAdmController_1.default();
+            const pubCompany = new PubCompanyController_1.default();
             const prompt = (0, prompt_sync_1.default)();
-            let inputEmail;
-            let inputPassword;
-            let inputUserName;
-            console.log("\n============== REGISTRATION ==============\n");
-            inputEmail = prompt("Email: ");
-            while (!inputEmail.includes("@")) {
-                console.log("\nThe email must include a '@'.");
-                inputEmail = prompt("Email: ");
-            }
-            inputPassword = prompt("Password: ");
-            inputUserName = prompt("UserName: ");
-            yield user.createUser(inputEmail, inputPassword, inputUserName, User_1.UserTypes.Common);
+            let name;
+            let foundationDate;
+            console.log("\n============== CREATE ==============\n");
+            name = prompt("Name of Publisher Company: ");
+            foundationDate = prompt("Foundation Year: ");
+            console.log(typeof foundationDate);
+            parseInt(foundationDate);
+            console.log(typeof foundationDate);
+            //await pubCompany.createPubCompany(name, foundationDate)
         }
         catch (error) {
         }
     });
 }
-exports.default = createUserView;
+exports.default = createPubCompany;

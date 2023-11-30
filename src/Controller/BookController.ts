@@ -28,10 +28,10 @@ export default class BookController {
         }
     }
     
-    public async select() {
+    public selectBooks() {
         const bookByTitle = this.database.findBookByTitleDb("LivroTeste");
 
-        await this.book.selectAll(bookByTitle);
+        this.book.selectAll(new Book(undefined, undefined, undefined, undefined, undefined, undefined));
     }
 
 }

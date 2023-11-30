@@ -12,8 +12,16 @@ export default function createUserViewAdmin() {
 
     console.log("\n============== REGISTRATION ==============\n");
     inputEmail = prompt("Email: ");
+    
+    while (!inputEmail.includes("@")) {
+        console.log("\nThe email must include a '@'.");
+        inputEmail = prompt("Email: ");
+    }
+
     inputPassword = prompt("Password: ");
     inputUserName = prompt("UserName: ");
+
+    console.log("User Type:");
     console.log("Type ( 1 ) to Admin User.\nType ( 2 ) to Common User.");
     inputUserType = prompt("Choose: ");
 
