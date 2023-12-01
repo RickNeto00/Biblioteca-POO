@@ -29,8 +29,6 @@ export default class BookController {
     }
     
     public selectBooks() {
-        const bookByTitle = this.database.findBookByTitleDb("LivroTeste");
-
         this.book.selectAll(new Book(undefined, undefined, undefined, undefined, undefined, undefined));
     }
 

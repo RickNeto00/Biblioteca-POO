@@ -1,8 +1,7 @@
 import PromptSync from "prompt-sync";
 import homeAdmin from "../admin/home";
 import UserAdmController from "../../Controller/UserAdmController";
-import createUserViewAdmin from "../admin/createUser";
-import createPubCompany from "./create";
+import createPubCompanyView from "./create";
 
 export default async function homePubCompany() {
     const prompt = PromptSync();
@@ -18,7 +17,7 @@ export default async function homePubCompany() {
 
     switch (choice) {
         case "1":
-            createPubCompany();
+            createPubCompanyView();
             break;
         case "2":
             
@@ -28,7 +27,7 @@ export default async function homePubCompany() {
             break;
         case "4":
             await user.selectAll();
-            homeUser();
+            homePubCompany();
             break;
         case "5":
             homeAdmin();
@@ -38,7 +37,7 @@ export default async function homePubCompany() {
             break;               
         default:
             console.log("Type a Valid Number.");
-            homeUser();
+            homePubCompany();
             break;
     }
 }

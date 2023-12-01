@@ -113,14 +113,14 @@ class Database {
             return pubCompany;
         });
     }
-    findPubCompanyByNameDb(title) {
+    findPubCompanyByNameDb(name) {
         return __awaiter(this, void 0, void 0, function* () {
-            const book = db_1.prisma.book.findUnique({
+            const pubCompany = db_1.prisma.pubCompany.findUnique({
                 where: {
-                    title: title
+                    name: name
                 }
             });
-            return book;
+            return pubCompany;
         });
     }
     //BOOK

@@ -4,11 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
-const home_1 = __importDefault(require("../user/home"));
+const user_1 = __importDefault(require("../user/user"));
 const __1 = __importDefault(require("../../.."));
 const BookController_1 = __importDefault(require("../../Controller/BookController"));
-const home_2 = __importDefault(require("../pubCompany/home"));
-function homeAdmin() {
+const home_1 = __importDefault(require("../pubCompany/home"));
+function home() {
     const prompt = (0, prompt_sync_1.default)();
     const book = new BookController_1.default();
     console.log("\n============================= ADMIN PAGE =============================\n");
@@ -21,7 +21,7 @@ function homeAdmin() {
     let choice = prompt("Choose an Option: ");
     switch (choice) {
         case "1":
-            (0, home_1.default)();
+            (0, user_1.default)();
             break;
         case "2":
             book.selectBooks();
@@ -29,7 +29,7 @@ function homeAdmin() {
         case "3":
             break;
         case "4":
-            (0, home_2.default)();
+            (0, home_1.default)();
             break;
         case "5":
             (0, __1.default)();
@@ -39,8 +39,8 @@ function homeAdmin() {
             break;
         default:
             console.log("Type a Valid Number.");
-            homeAdmin();
+            home();
             break;
     }
 }
-exports.default = homeAdmin;
+exports.default = home;

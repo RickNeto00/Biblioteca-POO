@@ -1,7 +1,7 @@
 import PromptSync from "prompt-sync";
 import PubCompanyController from "../../Controller/PubCompanyController";
 
-export default async function createPubCompany() {
+export default async function createPubCompanyView() {
     try {
         const pubCompany = new PubCompanyController();
         const prompt = PromptSync();
@@ -12,13 +12,7 @@ export default async function createPubCompany() {
         name = prompt("Name of Publisher Company: ");
         foundationDate = prompt("Foundation Year: ");
 
-        console.log(typeof foundationDate);
-
-        parseInt(foundationDate);
-
-        console.log(typeof foundationDate);
-
-        //await pubCompany.createPubCompany(name, foundationDate)
+        await pubCompany.createPubCompany(name, parseInt(foundationDate))
     
     } catch (error) {
         

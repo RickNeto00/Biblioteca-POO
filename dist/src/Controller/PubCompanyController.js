@@ -12,7 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const PubCompany_1 = __importDefault(require("../Model/PubCompany"));
+const create_1 = __importDefault(require("../View/pubCompany/create"));
+const home_1 = __importDefault(require("../View/pubCompany/home"));
 const ConnectionController_1 = __importDefault(require("./ConnectionController"));
 class PubCompanyController {
     constructor() {
@@ -21,13 +22,16 @@ class PubCompanyController {
     createPubCompany(name, foundationDate) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const pubCompanyByName = this.database.findPubCompanyByNameDb(name);
+                const pubCompanyByName = yield this.database.findPubCompanyByNameDb(name);
                 if (pubCompanyByName != undefined) {
-                    return console.log("Publication Company already exists.");
+                    console.log("Publisher Company already exists.");
+                    return (0, create_1.default)();
+                    return "Nao deu certo";
                 }
-                const pubCompanyDb = yield this.database.createPubCompanyDb(name, foundationDate);
-                const newPubCompany = new PubCompany_1.default(pubCompanyDb.id, name, foundationDate);
-                return newPubCompany;
+                yield this.database.createPubCompanyDb(name, foundationDate);
+                console.log("Publisher Company created with success!");
+                return (0, home_1.default)();
+                return "Teste deu certo";
             }
             catch (_a) {
                 return console.log("Something went Wrong");

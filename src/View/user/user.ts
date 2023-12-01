@@ -27,7 +27,7 @@ export default async function user() {
             break;
         case "4":
             await userControleler.selectAll();
-            homeAdmin();
+            user();
             break;
         case "5":
             home();

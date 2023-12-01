@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
 const PubCompanyController_1 = __importDefault(require("../../Controller/PubCompanyController"));
-function createPubCompany() {
+function createPubCompanyView() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const pubCompany = new PubCompanyController_1.default();
@@ -24,13 +24,10 @@ function createPubCompany() {
             console.log("\n============== CREATE ==============\n");
             name = prompt("Name of Publisher Company: ");
             foundationDate = prompt("Foundation Year: ");
-            console.log(typeof foundationDate);
-            parseInt(foundationDate);
-            console.log(typeof foundationDate);
-            //await pubCompany.createPubCompany(name, foundationDate)
+            yield pubCompany.createPubCompany(name, parseInt(foundationDate));
         }
         catch (error) {
         }
     });
 }
-exports.default = createPubCompany;
+exports.default = createPubCompanyView;

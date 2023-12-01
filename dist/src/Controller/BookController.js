@@ -37,7 +37,6 @@ class BookController {
         });
     }
     selectBooks() {
-        const bookByTitle = this.database.findBookByTitleDb("LivroTeste");
         this.book.selectAll(new Book_1.default(undefined, undefined, undefined, undefined, undefined, undefined));
     }
 }

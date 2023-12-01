@@ -100,13 +100,13 @@ export default class Database {
         return pubCompany;
     }
 
-    public async findPubCompanyByNameDb(title: string) {
-        const book = prisma.book.findUnique({
+    public async findPubCompanyByNameDb(name: string) {
+        const pubCompany = prisma.pubCompany.findUnique({
             where: {
-                title: title
+                name: name 
             }
         });
-        return book;
+        return pubCompany;
     }
 
     //BOOK

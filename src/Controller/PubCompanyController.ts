@@ -1,4 +1,6 @@
 import PubCompany from "../Model/PubCompany";
+import createPubCompanyView from "../View/pubCompany/create";
+import homePubCompany from "../View/pubCompany/home";
 import ConnectionController from "./ConnectionController";
 
 export default class PubCompanyController {
@@ -6,15 +8,18 @@ export default class PubCompanyController {
 
     public async createPubCompany(name: string, foundationDate: number) {
         try {
-            const pubCompanyByName = this.database.findPubCompanyByNameDb(name);
+            const pubCompanyByName = await this.database.findPubCompanyByNameDb(name);            
 
             if (pubCompanyByName != undefined) {
-                return console.log("Publication Company already exists.");
+                console.log("Publisher Company already exists.");
+                return createPubCompanyView();
+                return "Nao deu certo";
             }
 
-            const pubCompanyDb = await this.database.createPubCompanyDb(name, foundationDate);
-            const newPubCompany = new PubCompany(pubCompanyDb.id, name, foundationDate);
-            return newPubCompany;
+            await this.database.createPubCompanyDb(name, foundationDate);
+            console.log("Publisher Company created with success!");
+            return homePubCompany();
+            return "Teste deu certo";
             
         } catch {
             return console.log("Something went Wrong");

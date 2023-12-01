@@ -15,30 +15,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
 const home_1 = __importDefault(require("../admin/home"));
 const UserAdmController_1 = __importDefault(require("../../Controller/UserAdmController"));
-const create_1 = __importDefault(require("./create"));
-function homePubCompany() {
+const createUser_1 = __importDefault(require("../admin/createUser"));
+function user() {
     return __awaiter(this, void 0, void 0, function* () {
         const prompt = (0, prompt_sync_1.default)();
-        const user = new UserAdmController_1.default();
-        console.log("\n============== PUBLISHER COMPANY OPTIONS ==============\n");
-        console.log("| 1 | -> Create a Publisher Company");
-        console.log("| 2 | -> Edit a Publisher Company");
-        console.log("| 3 | -> Find a Publisher Company");
-        console.log("| 4 | -> Select all Companies");
+        const userControleler = new UserAdmController_1.default();
+        console.log("\n============== USER OPTIONS ==============\n");
+        console.log("| 1 | -> Create a User");
+        console.log("| 2 | -> Edit a User");
+        console.log("| 3 | -> Find a User");
+        console.log("| 4 | -> Select all Users");
         console.log("| 5 | -> Return to Admin Page");
         console.log("| 0 | -> Exit\n");
         let choice = prompt("Choose an Option: ");
         switch (choice) {
             case "1":
-                (0, create_1.default)();
+                (0, createUser_1.default)();
                 break;
             case "2":
                 break;
             case "3":
                 break;
             case "4":
-                yield user.selectAll();
-                homePubCompany();
+                yield userControleler.selectAll();
+                user();
                 break;
             case "5":
                 (0, home_1.default)();
@@ -48,9 +48,9 @@ function homePubCompany() {
                 break;
             default:
                 console.log("Type a Valid Number.");
-                homePubCompany();
+                user();
                 break;
         }
     });
 }
-exports.default = homePubCompany;
+exports.default = user;

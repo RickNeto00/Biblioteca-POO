@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const User_1 = __importDefault(require("../Model/User"));
 const home_1 = __importDefault(require("../View/admin/home"));
+const user_1 = __importDefault(require("../View/user/user"));
 const login_1 = __importDefault(require("../View/user/login"));
 const absUserController_1 = __importDefault(require("./absUserController"));
 class UserAdmController extends absUserController_1.default /*implements interfaceSelect*/ {
@@ -49,7 +50,8 @@ class UserAdmController extends absUserController_1.default /*implements interfa
             try {
                 const userByEmail = yield this.database.findUserByEmailDb(email);
                 if (userByEmail != undefined) {
-                    return console.log("\nEmail already registered.");
+                    console.log("\nEmail already registered.");
+                    return (0, user_1.default)();
                 }
                 const userByUserName = yield this.database.findUserByUserNameDb(userName);
                 if (userByUserName != undefined) {
