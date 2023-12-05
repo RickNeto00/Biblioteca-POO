@@ -8,6 +8,8 @@ const user_1 = __importDefault(require("../user/user"));
 const __1 = __importDefault(require("../../.."));
 const BookController_1 = __importDefault(require("../../Controller/BookController"));
 const home_1 = __importDefault(require("../pubCompany/home"));
+const AuthorController_1 = __importDefault(require("../../Controller/AuthorController"));
+const home_2 = __importDefault(require("../book/home"));
 function home() {
     const prompt = (0, prompt_sync_1.default)();
     const book = new BookController_1.default();
@@ -24,9 +26,12 @@ function home() {
             (0, user_1.default)();
             break;
         case "2":
-            book.selectBooks();
+            (0, home_2.default)();
             break;
         case "3":
+            let author = new AuthorController_1.default();
+            author.say();
+            author.selectAuthors();
             break;
         case "4":
             (0, home_1.default)();
@@ -34,7 +39,7 @@ function home() {
         case "5":
             (0, __1.default)();
             break;
-        case "5":
+        case "0":
             console.log("You choose exit.");
             break;
         default:

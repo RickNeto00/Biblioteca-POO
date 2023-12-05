@@ -3,6 +3,8 @@ import homeUser from "../user/user";
 import index from "../../..";
 import BookController from "../../Controller/BookController";
 import homePubCompany from "../pubCompany/home";
+import AuthorController from "../../Controller/AuthorController";
+import bookHome from "../book/home";
 
 export default function home() {
     const prompt = PromptSync();
@@ -23,10 +25,12 @@ export default function home() {
             homeUser();
             break;
         case "2":
-            book.selectBooks();
+            bookHome();
             break;
         case "3":
-            
+            let author = new AuthorController();
+            author.say();
+            author.selectAuthors();
             break;
         case "4":
             homePubCompany();
@@ -34,7 +38,7 @@ export default function home() {
         case "5":
             index();
             break;
-        case "5":
+        case "0":
             console.log("You choose exit.");
             break;                    
         default:

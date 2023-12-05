@@ -12,12 +12,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const Operation_1 = __importDefault(require("../Model/Operation"));
+const PubCompany_1 = __importDefault(require("../Model/PubCompany"));
 const create_1 = __importDefault(require("../View/pubCompany/create"));
 const home_1 = __importDefault(require("../View/pubCompany/home"));
 const ConnectionController_1 = __importDefault(require("./ConnectionController"));
 class PubCompanyController {
     constructor() {
         this.database = ConnectionController_1.default.getConnection();
+        this.pubCompany = new Operation_1.default;
     }
     createPubCompany(name, foundationDate) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -37,6 +40,9 @@ class PubCompanyController {
                 return console.log("Something went Wrong");
             }
         });
+    }
+    selectPubCompanies() {
+        this.pubCompany.selectAll(new PubCompany_1.default(undefined, undefined, undefined));
     }
 }
 exports.default = PubCompanyController;

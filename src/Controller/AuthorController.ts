@@ -1,22 +1,14 @@
 import Author from "../Model/Author";
-import ConnectionController from "./ConnectionController";
-import { interfaceSelect } from "./interfaceSelect";
+import Operation from "../Model/Operation";
+import PersonController from "./PersonController";
 
-export default class AuthorController implements interfaceSelect {
-    private database = ConnectionController.getConnection();
+export default class AuthorController extends PersonController {
 
-    selectAll(): Promise<{}[]> {
-        /*let author: string = "";
-        let authors: Author[] = [];
+    private author: Operation<Author> = new Operation<Author>;
 
-        for (let i = 0; i < authors.length; i++) {
-           const element = authors[i];
-           author = author + "Name: " + element.getName + " Age: " + element.getAge + "\n";
-        }
-
-        return author;*/
-        const authors = this.database.selectAuthorsDb();
-        return authors;
+    public say(): void {
+        super.say();
+        console.log("I am a Author");
     }
 
     public async createAuthor(name: string, age: number) {
@@ -28,5 +20,9 @@ export default class AuthorController implements interfaceSelect {
         } catch {
             return console.log("Something went Wrong");
         }
+    }
+
+    public selectAuthors() {
+        this.author.selectAll(new Author(undefined, undefined, undefined, undefined));
     }
 }

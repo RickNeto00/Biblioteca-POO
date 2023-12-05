@@ -6,16 +6,15 @@ export enum BookTypes{
     Action = "Action",
     Horror = "Horror",
     Literature = "Literature",
-    
 }
 
 export default class Book{
-    private id?: number;
-    private title?: string;
-    private yearPub?: number;
-    private pubCompany?: PubCompany;
-    private author?: Author;
-    private bookType?: BookTypes;
+    private id: number;
+    private title: string;
+    private yearPub: number;
+    private pubCompany: PubCompany;
+    private author: Author;
+    private bookType: BookTypes;
 
     constructor(id: any, title: any, yearPub: any, pubCompany: any, author: any, bookType: any) {
         this.id = id;

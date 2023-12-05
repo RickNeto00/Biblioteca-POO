@@ -13,7 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const ConnectionController_1 = __importDefault(require("../Controller/ConnectionController"));
+const Author_1 = __importDefault(require("./Author"));
 const Book_1 = __importDefault(require("./Book"));
+const PubCompany_1 = __importDefault(require("./PubCompany"));
 const User_1 = __importDefault(require("./User"));
 class Operation {
     constructor() {
@@ -37,25 +39,22 @@ class Operation {
                 }
                 return console.log(book);
             }
-            /*switch (obj) {
-                case User:
-                    const users = await this.database.selectUsersDb();
-                    let user: string = "";
-                        
-                    for (let i = 0; i < users.length; i++) {
-                        user += "Username: " + users[i].email + " | User Type: " + users[i].userType + "\n";
-                    }
-                    return console.log(user);
-    
-                case Book:
-                    const books = await this.database.selectBooksDb();
-                    let book: string = "";
-                        
-                    for (let i = 0; i < books.length; i++) {
-                        book += "Title: " + books[i].title + " | Book Type: " + books[i].bookType + "\n";
-                    }
-                    return console.log(book);
-            }*/
+            if (obj instanceof Author_1.default) {
+                const authors = yield this.database.selectAuthorsDb();
+                let author = "";
+                for (let i = 0; i < authors.length; i++) {
+                    author += "Name: " + authors[i].name + " | Age: " + authors[i].age + "\n";
+                }
+                return console.log(author);
+            }
+            if (obj instanceof PubCompany_1.default) {
+                const pubCompanies = yield this.database.selectAuthorsDb();
+                let pubCompany = "";
+                for (let i = 0; i < pubCompanies.length; i++) {
+                    pubCompany += i + " -> Name: " + pubCompanies[i].name + " | Foundation Year: " + pubCompanies[i].age + "\n";
+                }
+                return console.log(pubCompany);
+            }
         });
     }
 }

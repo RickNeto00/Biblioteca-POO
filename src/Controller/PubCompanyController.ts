@@ -1,3 +1,4 @@
+import Operation from "../Model/Operation";
 import PubCompany from "../Model/PubCompany";
 import createPubCompanyView from "../View/pubCompany/create";
 import homePubCompany from "../View/pubCompany/home";
@@ -5,6 +6,7 @@ import ConnectionController from "./ConnectionController";
 
 export default class PubCompanyController {
     private database = ConnectionController.getConnection();
+    private pubCompany: Operation<PubCompany> = new Operation<PubCompany>;
 
     public async createPubCompany(name: string, foundationDate: number) {
         try {
@@ -24,5 +26,9 @@ export default class PubCompanyController {
         } catch {
             return console.log("Something went Wrong");
         }
+    }
+
+    public selectPubCompanies() {
+        this.pubCompany.selectAll(new PubCompany(undefined, undefined, undefined));
     }
 }

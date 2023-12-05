@@ -3,7 +3,7 @@ export default class PubCompany{
     private name: string;
     private foundationDate: number;
 
-    constructor(id: number, name: string, foundationDate: number){
+    constructor(id: any, name: any, foundationDate: any){
         this.id = id;
         this.name = name;
         this.foundationDate = foundationDate;

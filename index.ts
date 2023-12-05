@@ -10,7 +10,7 @@ export default function index() {
     console.log("============================= LIBRARY SYSTEM =============================\n");
     console.log("| 1 | -> Login");
     console.log("| 2 | -> Register");
-    console.log("| 3 | -> Exit\n");
+    console.log("| 0 | -> Exit\n");
     
     let inputChoice = prompt("Choose an Option: ");
     
@@ -23,9 +23,8 @@ export default function index() {
             createUserView();
             break;
     
-        case "3":
+        case "0":
             console.log("\nYou choose exit.");
-            
             break;
     
         default:

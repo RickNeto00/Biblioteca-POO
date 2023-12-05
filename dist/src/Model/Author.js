@@ -1,31 +1,21 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-class Author {
+const Person_1 = __importDefault(require("./Person"));
+class Author extends Person_1.default {
     constructor(id, name, age, publicId) {
+        super(name, age);
         this.id = id;
-        this.name = name;
-        this.age = age;
         this.publicId = publicId;
     }
     //GETS
     getId() {
         return this.id;
     }
-    getName() {
-        return this.name;
-    }
-    getAge() {
-        return this.age;
-    }
     getPublicId() {
         return this.publicId;
-    }
-    //SETS
-    setName(name) {
-        this.name = name;
-    }
-    setAge(age) {
-        this.age = age;
     }
 }
 exports.default = Author;

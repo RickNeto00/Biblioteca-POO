@@ -3,9 +3,8 @@ import homeAdmin from "../View/admin/home";
 import homeUser from "../View/user/user";
 import loginUserView from "../View/user/login";
 import absUserController from "./absUserController";
-import { interfaceSelect } from "./interfaceSelect";
 
-export default class UserAdmController extends absUserController /*implements interfaceSelect*/ {
+export default class UserAdmController extends absUserController {
     
     async login(password: string, email?: string, userName?: string) {
         try {

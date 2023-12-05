@@ -13,23 +13,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Author_1 = __importDefault(require("../Model/Author"));
-const ConnectionController_1 = __importDefault(require("./ConnectionController"));
-class AuthorController {
+const Operation_1 = __importDefault(require("../Model/Operation"));
+const PersonController_1 = __importDefault(require("./PersonController"));
+class AuthorController extends PersonController_1.default {
     constructor() {
-        this.database = ConnectionController_1.default.getConnection();
+        super(...arguments);
+        this.author = new Operation_1.default;
     }
-    selectAll() {
-        /*let author: string = "";
-        let authors: Author[] = [];
-
-        for (let i = 0; i < authors.length; i++) {
-           const element = authors[i];
-           author = author + "Name: " + element.getName + " Age: " + element.getAge + "\n";
-        }
-
-        return author;*/
-        const authors = this.database.selectAuthorsDb();
-        return authors;
+    say() {
+        super.say();
+        console.log("I am a Author");
     }
     createAuthor(name, age) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -42,6 +35,9 @@ class AuthorController {
                 return console.log("Something went Wrong");
             }
         });
+    }
+    selectAuthors() {
+        this.author.selectAll(new Author_1.default(undefined, undefined, undefined, undefined));
     }
 }
 exports.default = AuthorController;
