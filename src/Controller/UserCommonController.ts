@@ -1,4 +1,5 @@
 import User, { UserTypes } from "../Model/User";
+import homeCommonUser from "../View/user/homeCommon";
 import loginUserView from "../View/user/login";
 import absUserController from "./absUserController";
 

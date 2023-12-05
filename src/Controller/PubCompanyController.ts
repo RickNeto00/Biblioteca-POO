@@ -14,13 +14,13 @@ export default class PubCompanyController {
 
             if (pubCompanyByName != undefined) {
                 console.log("Publisher Company already exists.");
-                return createPubCompanyView();
+                //return createPubCompanyView();
                 return "Nao deu certo";
             }
 
             await this.database.createPubCompanyDb(name, foundationDate);
             console.log("Publisher Company created with success!");
-            return homePubCompany();
+            //return homePubCompany();
             return "Teste deu certo";
             
         } catch {

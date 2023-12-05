@@ -13,9 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const PubCompanyController_1 = __importDefault(require("../Controller/PubCompanyController"));
-const create_1 = __importDefault(require("../View/pubCompany/create"));
 describe('testing create publisher company', () => {
     test('createPubCompany function', () => __awaiter(void 0, void 0, void 0, function* () {
-        expect(yield new PubCompanyController_1.default().createPubCompany("teste2", 2000)).toBe((0, create_1.default)());
+        expect(yield new PubCompanyController_1.default().createPubCompany("teste1234", 2000)).toBe("Teste deu certo");
     }));
 });

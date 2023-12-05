@@ -36,6 +36,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const User_1 = __importStar(require("../Model/User"));
+const homeCommon_1 = __importDefault(require("../View/user/homeCommon"));
 const login_1 = __importDefault(require("../View/user/login"));
 const absUserController_1 = __importDefault(require("./absUserController"));
 class UserCommonController extends absUserController_1.default {
@@ -49,7 +50,7 @@ class UserCommonController extends absUserController_1.default {
                         return (0, login_1.default)();
                     }
                     console.log("User Found");
-                    return homeCommonUser();
+                    return (0, homeCommon_1.default)();
                 }
                 if (userName) {
                     const loginByUsername = yield this.database.loginByUsernameDb(userName, password);
@@ -58,7 +59,7 @@ class UserCommonController extends absUserController_1.default {
                         return (0, login_1.default)();
                     }
                     console.log("User Found");
-                    return homeCommonUser();
+                    return (0, homeCommon_1.default)();
                 }
             }
             catch (error) {

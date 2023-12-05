@@ -14,8 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Operation_1 = __importDefault(require("../Model/Operation"));
 const PubCompany_1 = __importDefault(require("../Model/PubCompany"));
-const create_1 = __importDefault(require("../View/pubCompany/create"));
-const home_1 = __importDefault(require("../View/pubCompany/home"));
 const ConnectionController_1 = __importDefault(require("./ConnectionController"));
 class PubCompanyController {
     constructor() {
@@ -28,12 +26,12 @@ class PubCompanyController {
                 const pubCompanyByName = yield this.database.findPubCompanyByNameDb(name);
                 if (pubCompanyByName != undefined) {
                     console.log("Publisher Company already exists.");
-                    return (0, create_1.default)();
+                    //return createPubCompanyView();
                     return "Nao deu certo";
                 }
                 yield this.database.createPubCompanyDb(name, foundationDate);
                 console.log("Publisher Company created with success!");
-                return (0, home_1.default)();
+                //return homePubCompany();
                 return "Teste deu certo";
             }
             catch (_a) {

@@ -30,7 +30,6 @@ function createBook() {
             console.log("\n============== REGISTRATE A BOOK ==============\n");
             title = prompt("Title: ");
             yearPub = parseInt(prompt("Publication Year: "));
-            console.log("Select a Publisher Company:");
             pubCompanyName = prompt("Type the name of Publisher Company: ");
             authorName = prompt("Type the name of Author: ");
             console.log(Book_1.BookTypes);
